@@ -2,9 +2,6 @@
 ### Linux template
 *~
 
-# dist is for local use
-dist
-
 # KDE directory preferences
 .directory
 
@@ -85,7 +82,6 @@ build/Release
 
 # Dependency directory
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
-.npm
 node_modules
 ### Windows template
 # Windows image file caches
@@ -138,18 +134,3 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# dependencies
-node_modules
-
-# testing
-coverage
-
-# production
-build
-
-# misc
-.DS_Store
-.env
-npm-debug.log
