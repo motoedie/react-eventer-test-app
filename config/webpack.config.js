@@ -5,6 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const project = require('./project.config')
 const debug = require('debug')('app:config:webpack')
+const path = require('path')
+const fs = require('fs')
 
 const __DEV__ = project.globals.__DEV__
 const __PROD__ = project.globals.__PROD__
@@ -16,11 +18,20 @@ const webpackConfig = {
   target  : 'web',
   devtool : project.compiler_devtool,
   resolve : {
-    root       : project.paths.client(),
+    root       : path.resolve(__dirname, '../node_modules'),
     extensions : ['', '.js', '.jsx', '.json']
+  },
+  resolveLoader: {
+    root: [path.resolve(__dirname, '../node_modules')]
   },
   module : {}
 }
+
+var includePaths = [
+  fs.realpathSync(path.resolve(__dirname, '../src')),
+  fs.realpathSync(path.resolve(__dirname, '../node_modules/react-eventer'))
+]
+
 // ------------------------------------
 // Entry Points
 // ------------------------------------
@@ -121,6 +132,7 @@ webpackConfig.module.loaders = [{
   test    : /\.(js|jsx)$/,
   exclude : /node_modules/,
   loader  : 'babel',
+  include: includePaths,
   query   : project.compiler_babel
 }, {
   test   : /\.json$/,
