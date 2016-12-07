@@ -1,6 +1,7 @@
 import React from 'react'
 import DuckImage from '../assets/Duck.jpg'
 import './HomeView.scss'
+import { Eventer } from 'react-eventer'
 
 export const HomeView = () => (
   <div>
@@ -8,8 +9,9 @@ export const HomeView = () => (
     <img
       alt='This is a duck, because Redux!'
       className='duck'
-      src={DuckImage} />
+      src={DuckImage}
+    />
   </div>
 )
 
-export default HomeView
+export default Eventer()(HomeView)
