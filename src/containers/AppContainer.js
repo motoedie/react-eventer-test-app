@@ -17,10 +17,12 @@ class AppContainer extends Component {
     const { routes, store } = this.props
 
     return (
-      <EventBridge>
+      <EventBridge name='1'>
         <Provider store={store}>
           <div style={{ height: '100%' }}>
-            <Router history={browserHistory} children={routes} />
+            <EventBridge name='2'>
+              <Router history={browserHistory} children={routes} />
+            </EventBridge>
           </div>
         </Provider>
       </EventBridge>
